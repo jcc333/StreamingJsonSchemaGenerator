@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "StreamingJsonSchemaGenerator", "StreamingJsonSchemaGenerator.Lib\StreamingJsonSchemaGenerator.fsproj", "{67A32626-883F-4381-9514-6FC6364A3071}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "StreamingJsonSchemaGenerator.Tests", "StreamingJsonSchemaGenerator.Tests\StreamingJsonSchemaGenerator.Tests.fsproj", "{9ED3012A-E78F-4637-9387-77988D38AA1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67A32626-883F-4381-9514-6FC6364A3071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Debug|x64.Build.0 = Debug|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Debug|x86.Build.0 = Debug|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Release|x64.ActiveCfg = Release|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Release|x64.Build.0 = Release|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Release|x86.ActiveCfg = Release|Any CPU
+		{67A32626-883F-4381-9514-6FC6364A3071}.Release|x86.Build.0 = Release|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Debug|x64.Build.0 = Debug|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Debug|x86.Build.0 = Debug|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Release|x64.ActiveCfg = Release|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Release|x64.Build.0 = Release|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Release|x86.ActiveCfg = Release|Any CPU
+		{9ED3012A-E78F-4637-9387-77988D38AA1E}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
