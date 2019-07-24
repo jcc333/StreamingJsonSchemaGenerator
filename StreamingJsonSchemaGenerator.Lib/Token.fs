@@ -23,8 +23,8 @@ module Token =
 
     type TokenSeq = seq<TokenResult>
 
-    let wrapTokensOut(typ: JsonToken, tok: obj): TokenResult =
-        match typ with
+    let validate(typ: JsonToken, tok: obj): TokenResult =
+        let result = function
         | JsonToken.None -> Error("Reader has not yet read.")
         | JsonToken.StartObject -> Result.Ok(StartObject)
         | JsonToken.StartArray -> Ok(StartArray)
@@ -39,7 +39,8 @@ module Token =
         | JsonToken.EndArray -> Ok(EndArray)
         | JsonToken.Date -> Ok(Date)
         | JsonToken.Bytes -> Ok(Bytes)
-        | _ -> Error(String.Format("Json '{}': '{}' out of range or out of scope", typ, tok))
+        | typ -> Error(String.Format("Json '{}': '{}' out of range or out of scope", typ, tok))
+        result typ
 
     type StakeStackItem = ArrayScope | ObjectScope
 
@@ -83,15 +84,21 @@ module Token =
         loop [] ts
 
     let tokens(reader: Newtonsoft.Json.JsonReader) =
-        seq { while reader.Read() do yield (reader.TokenType, reader.Value) }
+        seq {
+            while reader.Read() do
+                yield (reader.TokenType, reader.Value)
+        }
 
     let tokenize(reader: Newtonsoft.Json.JsonReader) =
-        reader |> tokens |> Seq.map wrapTokensOut |> validateTokenOrder 
+        reader |> tokens |> Seq.map validate |> validateTokenOrder 
 
-    let consume(tokens: TokenSeq)(until: TokenResult -> Boolean)(tokenizer: Token -> Result<'a, string>)(exhausted: Result<'a, string>): Result<'a, string> =
-        tokens
-        |> Seq.takeWhile until
-        |> Seq.take 1
-        |> Seq.tryHead
-        |> Option.map (Result.bind tokenizer)
-        |> Option.defaultValue exhausted
+    let consume(until: TokenResult -> Boolean)(tokenizer: Token -> Result<'a, string>)(exhausted: Result<'a, string>)(tokens: TokenSeq): Result<'a, string> =
+        try
+            tokens
+            |> Seq.takeWhile until
+            //|> Seq.take 1
+            |> Seq.tryHead
+            |> Option.map (Result.bind tokenizer)
+            |> Option.defaultValue exhausted
+        with
+            | :? System.InvalidOperationException as exn -> Error(exn.Message)

@@ -83,7 +83,7 @@ module JsonType =
                 | Token.Date      -> Ok(Date)
                 | Token.Bytes     -> Ok(Bytes)
                 | t               -> unexpected(t)
-            consume tokens (fun _ -> true) handleToken earlyEof
+            consume (fun _ -> true) handleToken earlyEof tokens
 
         and objectType(acc: TypeTree, properties: Map<string, TypeTree>, tokens: TokenSeq) =
             let isEndOfObject = function
@@ -100,7 +100,7 @@ module JsonType =
                     | Error(err) -> Error(err)
                 | EndObject -> Ok(acc)
                 | t -> unexpected(t)
-            consume tokens isEndOfObject handleToken earlyEof
+            consume isEndOfObject handleToken earlyEof tokens
 
         and arrayType(acc, tokens) =
             let isEndOfArray = function
@@ -111,6 +111,6 @@ module JsonType =
                 | EndArray -> Ok(acc)
                 | Comment -> arrayType(acc, Seq.tail tokens)
                 | _ -> loop(tokens) |> Result.map (unify acc)
-            consume tokens isEndOfArray handleToken earlyEof
+            consume isEndOfArray handleToken earlyEof tokens
 
         loop(tokens)

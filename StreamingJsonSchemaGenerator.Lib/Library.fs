@@ -7,7 +7,7 @@ namespace StreamingJsonSchema
     open StreamingJsonSchemaGenerator.JsonType
 
     type Generator(reader: Newtonsoft.Json.JsonReader) = class
-        let typeTreeToSchema: TypeTree -> JSchema = 
+        let typeTreeToSchema: TypeTree -> JSchema =
             let rec loop (s: JSchema) (t: TypeTree) =
                 match t with
                 | Union(members) ->
